@@ -16,7 +16,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    npm i install
     npm run build
     npm i selenium-webdriver mocha
     npm i selenium-webdriver mocha webdriver-manager
