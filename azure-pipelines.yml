@@ -18,6 +18,7 @@ steps:
 - script: |
     npm i install
     npm run build
+    npm install mocha --save-dev -g
     npm i selenium-webdriver mocha
     npm i selenium-webdriver mocha webdriver-manager
     npm run test
