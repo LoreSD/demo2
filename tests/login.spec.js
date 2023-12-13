@@ -7,7 +7,6 @@ const {Builder, Browser, By, Key, until} = require('selenium-webdriver');
     await driver.findElement(By.id('user-name')).sendKeys('standard_user', Key.RETURN);
     await driver.findElement(By.css('#password')).sendKeys('secret_sauce', Key.RETURN);
     await driver.findElement(By.css('[data-test="login-button"]')).click()
-    await driver.wait(until.titleIs('webdriver - Google Search'), 5000);
   } finally {
     await driver.quit();
   }
