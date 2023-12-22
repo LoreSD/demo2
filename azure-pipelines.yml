@@ -66,7 +66,7 @@ steps:
   - script: yarn install --frozen-lockfile # or "npm install --ci"
     displayName: yarn install
     # workingDirectory should match where your package.json file is located. It defaults to the root of the repository.
-    workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
+    workingDirectory: $(Build.SourcesDirectory)
 
   # This task runs the tests specified by jest.config.js, including our example accessibility tests.
   #
@@ -76,13 +76,13 @@ steps:
   # The 2>&1 is a workaround for facebook/jest#5064
   - script: yarn test --ci 2>&1 # or "npm run test -- --ci 2>&1"
     displayName: yarn test
-    workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
+    workingDirectory: $(Build.SourcesDirectory)
 
   # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
   - task: PublishTestResults@2
     displayName: publish test results
     inputs:
-      testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results/junit.xml
+      testResultsFiles: $(Build.SourcesDirectory)
       testRunTitle: typescript-selenium-webdriver-sample ($(imageName) $(browser))
     condition: succeededOrFailed()
 
@@ -98,5 +98,5 @@ steps:
       # to find the .sarif files our accessibility test produces.
       artifactName: "CodeAnalysisLogs"
       # "test-results" is not a required convention; it just happens to be where our tests write .sarif files to.
-      pathtoPublish: "$(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results"
+      pathtoPublish: "$(Build.SourcesDirectory)"
     condition: succeededOrFailed()
