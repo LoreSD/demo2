@@ -16,6 +16,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    firefox --version
     npm i install
     npm run build
     npm install mocha --save-dev -g
